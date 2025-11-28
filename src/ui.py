@@ -262,13 +262,18 @@ class UI:
                 patient_id = patient_repo.create(
                     name=patient.get("name", "Desconhecido"),
                     cpf=patient.get("cpf", "000.000.000-00"),
-                    date_of_birth=patient.get("date_of_birth"),
-                    doctor_id=doctor_id
+                    date_of_birth=patient.get("date_of_birth")
                 )
                 self.response_box.insert(tk.END, f"\n💾 Paciente salvo no banco. ID={patient_id}\n")
                 
                 triage = TriageRepository()
-                triage_id = triage.create(session.id, datetime.now().isoformat(), path=session.path, patient_id=patient_id)
+                triage_id = triage.create(
+                    session.id, 
+                    datetime.now().isoformat(), 
+                    path=session.path, 
+                    patient_id=patient_id,
+                    doctor_id=doctor_id
+                )
 
                 self.response_box.insert(tk.END, f"\n💾 Triagem finalizada e salva no banco. ID={triage_id}\n")
             
