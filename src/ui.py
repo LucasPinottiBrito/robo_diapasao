@@ -272,7 +272,7 @@ class UI:
                     datetime.now().isoformat(), 
                     path=session.path, 
                     patient_id=patient_id,
-                    doctor_id=doctor_id
+                    main_doctor_id=doctor_id
                 )
 
                 self.response_box.insert(tk.END, f"\n💾 Triagem finalizada e salva no banco. ID={triage_id}\n")
